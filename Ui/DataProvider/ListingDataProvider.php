@@ -5,33 +5,14 @@ declare(strict_types=1);
 namespace Maksimator\ProductLabels\Ui\DataProvider;
 
 use Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider;
-use Magento\Framework\Api\Search\SearchResultFactory;
 use Magento\Framework\Api\Search\ReportingInterface;
 use Magento\Framework\Api\Search\SearchCriteriaBuilder;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\App\RequestInterface;
 use Maksimator\ProductLabels\Model\ResourceModel\Label\CollectionFactory;
-use Maksimator\ProductLabels\Model\ResourceModel\Label\Collection;
 
 class ListingDataProvider extends DataProvider
 {
-    /**
-     * @var CollectionFactory
-     */
-    private $collectionFactory;
-
-    /**
-     * @param string $name
-     * @param string $primaryFieldName
-     * @param string $requestFieldName
-     * @param ReportingInterface $reporting
-     * @param SearchCriteriaBuilder $searchCriteriaBuilder
-     * @param RequestInterface $request
-     * @param FilterBuilder $filterBuilder
-     * @param CollectionFactory $collectionFactory
-     * @param array $meta
-     * @param array $data
-     */
     public function __construct(
         string $name,
         string $primaryFieldName,
@@ -40,7 +21,7 @@ class ListingDataProvider extends DataProvider
         SearchCriteriaBuilder $searchCriteriaBuilder,
         RequestInterface $request,
         FilterBuilder $filterBuilder,
-        CollectionFactory $collectionFactory,
+        private readonly CollectionFactory $collectionFactory,
         array $meta = [],
         array $data = []
     ) {
@@ -55,12 +36,8 @@ class ListingDataProvider extends DataProvider
             $meta,
             $data
         );
-        $this->collectionFactory = $collectionFactory;
     }
 
-    /**
-     * @return array
-     */
     public function getData(): array
     {
         $collection = $this->collectionFactory->create();

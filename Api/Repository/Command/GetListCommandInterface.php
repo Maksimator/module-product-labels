@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Maksimator\ProductLabels\Api\Repository\Command;
 
 use Magento\Framework\Api\SearchCriteriaInterface;

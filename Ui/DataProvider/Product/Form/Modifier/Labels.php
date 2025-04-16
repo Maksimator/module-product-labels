@@ -23,7 +23,7 @@ class Labels implements ModifierInterface
 
     public function modifyMeta(array $meta): array
     {
-        $meta = $this->arrayManager->merge(
+        return $this->arrayManager->merge(
             'product-details/children',
             $meta,
             [
@@ -64,8 +64,6 @@ class Labels implements ModifierInterface
                 ],
             ]
         );
-
-        return $meta;
     }
 
     public function modifyData(array $data): array

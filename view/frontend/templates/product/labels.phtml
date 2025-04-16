@@ -1,0 +1,16 @@
+<?php
+/** @var \Maksimator\ProductLabels\Block\Product\Labels $block */
+
+$labels = $block->getLabels();
+?>
+
+<?php if (!empty($labels)): ?>
+    <div class="product-labels">
+        <strong><?= __('Product Labels') ?>:</strong>
+        <ul>
+            <?php foreach ($labels as $label): ?>
+                <li><?= $block->escapeHtml($label['label_text']) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>

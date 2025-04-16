@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Maksimator_ProductLabels::main"
+             title="Product Labels"
+             translate="title"
+             module="Maksimator_ProductLabels"
+             sortOrder="50"
+             parent="Magento_Backend::marketing"
+             resource="Maksimator_ProductLabels::productlabels"/>
+        <add id="Maksimator_ProductLabels::manage"
+             title="Manage Labels"
+             translate="title"
+             module="Maksimator_ProductLabels"
+             sortOrder="10"
+             parent="Maksimator_ProductLabels::main"
+             action="productlabels/label/index"
+             resource="Maksimator_ProductLabels::productlabels"/>
+    </menu>
+</config>

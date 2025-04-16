@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Maksimator\ProductLabels\Api\Repository\Command\DeleteCommandInterface"
+                type="Maksimator\ProductLabels\Model\ResourceModel\Label\Command\Delete"/>
+    <preference for="Maksimator\ProductLabels\Api\Repository\Command\GetCommandInterface"
+                type="Maksimator\ProductLabels\Model\ResourceModel\Label\Command\Get"/>
+    <preference for="Maksimator\ProductLabels\Api\Repository\Command\GetListCommandInterface"
+                type="Maksimator\ProductLabels\Model\ResourceModel\Label\Command\GetList"/>
+    <preference for="Maksimator\ProductLabels\Api\Repository\Command\SaveCommandInterface"
+                type="Maksimator\ProductLabels\Model\ResourceModel\Label\Command\Save"/>
+    <preference for="Maksimator\ProductLabels\Api\Repository\LabelRepositoryInterface"
+                type="Maksimator\ProductLabels\Model\LabelRepository"/>
+    <preference for="Maksimator\ProductLabels\Api\Repository\Data\LabelInterface"
+                type="Maksimator\ProductLabels\Model\Label"/>
+    <preference for="Maksimator\ProductLabels\Api\Repository\Data\LabelSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="product_labels_listing_data_source" xsi:type="string">ProductLabelsListingCollection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="ProductLabelsListingCollection" type="Maksimator\ProductLabels\Ui\DataProvider\Labels\Listing\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">maksimator_labels</argument>
+            <argument name="resourceModel" xsi:type="string">Maksimator\ProductLabels\Model\ResourceModel\Label</argument>
+        </arguments>
+    </virtualType>
+    <type name="Maksimator\ProductLabels\Ui\DataProvider\ListingDataProvider">
+        <arguments>
+            <argument name="collectionFactory" xsi:type="object">Maksimator\ProductLabels\Model\ResourceModel\Label\CollectionFactory</argument>
+        </arguments>
+    </type>
+    <type name="Maksimator\ProductLabels\Ui\DataProvider\FormDataProvider">
+        <arguments>
+            <argument name="name" xsi:type="string">product_labels_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">label_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="collectionFactory" xsi:type="object">Maksimator\ProductLabels\Model\ResourceModel\Label\CollectionFactory</argument>
+        </arguments>
+    </type>
+</config>

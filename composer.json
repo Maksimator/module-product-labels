@@ -1,0 +1,18 @@
+{
+    "name": "maksimator/module-product-labels",
+    "description": "Magento 2 module to assign labels to products",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "MIT",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Maksimator\\ProductLabels\\": ""
+        }
+    },
+    "require": {
+        "php": "^8.3"
+    }
+}
